@@ -1,16 +1,31 @@
 # bhagwatgita
 
-A new Flutter project.
+## Overview
+The Bhagavad Gita App is a user-friendly mobile application designed to provide access to the teachings of the Bhagavad Gita in both Hindi and English. The app includes detailed summaries, images, and chapters to help users understand the profound wisdom contained in this ancient scripture.
 
-## Getting Started
+## Features
+Multi-language Support: Users can switch between Hindi and English to read the
+chapters.
 
-This project is a starting point for a Flutter application.
+## Chapter Summaries: 
+Each chapter is accompanied by a concise summary that encapsulates its key teachings.
 
-A few resources to get you started if this is your first Flutter project:
+## Images: 
+Relevant images for each chapter to enhance the user experience.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## User-Friendly Interface: 
+Simple and intuitive navigation to access chapters easily.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Interactive Details: 
+Users can tap on a chapter to view more details,including the summary and 
+images.
+
+## Home Page:
+
+Displays a list of chapters.
+Users can select a chapter to view details.
+
+## Detail Page:
+
+Displays chapter number, chapter name, and a summary.
+Shows an image related to the chapter.
