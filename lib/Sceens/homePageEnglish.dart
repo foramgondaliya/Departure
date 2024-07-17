@@ -70,7 +70,7 @@ class _HomePageEnglishState extends State<HomePageEnglish> {
                             arguments: allData[i]);
                       },
                       leading: CircleAvatar(
-                        backgroundColor: Colors.teal,
+                        backgroundColor: Colors.blue.shade800,
                         child: Text(
                           "${allData[i]['chapter_number']}",
                           style: TextStyle(color: Colors.white),
@@ -82,8 +82,8 @@ class _HomePageEnglishState extends State<HomePageEnglish> {
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       subtitle: Text("${allData[i]['name_meaning']}"),
-                      trailing:
-                          Icon(Icons.arrow_forward_ios, color: Colors.teal),
+                      trailing: Icon(Icons.arrow_forward_ios,
+                          color: Colors.blue.shade800),
                     ),
                   );
                 },

@@ -76,7 +76,7 @@ class _DetailPageEnglishState extends State<DetailPageEnglish> {
                   height: 260,
                   width: 420,
                   decoration: BoxDecoration(
-                    color: Colors.red,
+                    //color: Colors.red,
                     borderRadius: BorderRadius.circular(15),
                     image: DecorationImage(
                       fit: BoxFit.cover,
