@@ -1,0 +1,98 @@
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late Future<String> jsonData;
+
+  void loadjson() {
+    jsonData = rootBundle.loadString("assets/JSON/data.json");
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loadjson();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "HomePage",
+          style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+        ),
+      ),
+      body: FutureBuilder(
+        future: jsonData,
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Center(
+              child: Text("ERROR: ${snapshot.error}",
+                  style: TextStyle(color: Colors.red, fontSize: 18)),
+            );
+          } else if (snapshot.hasData) {
+            String? data = snapshot.data;
+            List<dynamic> allData = (data == null) ? [] : jsonDecode(data);
+
+            if (data == null) {
+              return Center(
+                child: Text(
+                  "No Data Available...",
+                  style: TextStyle(fontSize: 20),
+                ),
+              );
+            } else {
+              return ListView.separated(
+                padding: const EdgeInsets.all(8.0),
+                itemCount: allData.length,
+                separatorBuilder: (context, i) => Divider(),
+                itemBuilder: (context, i) {
+                  return Card(
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: ListTile(
+                      contentPadding: EdgeInsets.all(10),
+                      onTap: () {
+                        Navigator.of(context)
+                            .pushNamed('detailPage', arguments: allData[i]);
+                      },
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.teal,
+                        child: Text(
+                          "${allData[i]['chapter_number']}",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      title: Text(
+                        "${allData[i]['name']}",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Text("${allData[i]['name_meaning']}"),
+                      trailing:
+                          Icon(Icons.arrow_forward_ios, color: Colors.teal),
+                    ),
+                  );
+                },
+              );
+            }
+          }
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      ),
+    );
+  }
+}
