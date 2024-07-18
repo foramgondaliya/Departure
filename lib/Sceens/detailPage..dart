@@ -1,4 +1,6 @@
+import 'package:bhagwatgita/Modal/favourite.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 class DetailPage extends StatefulWidget {
   const DetailPage({super.key});
@@ -10,13 +12,35 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
-    Map data = ModalRoute.of(context)!.settings.arguments as Map;
+    Map<String, dynamic> data =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     return Scaffold(
       appBar: AppBar(
         title: Text(
           "Detail Page",
           style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              setState(() {
+                data['isTapped'] = !data['isTapped'];
+                if (data['isTapped']) {
+                  favourite.favData.add(data);
+                } else {
+                  favourite.favData.remove(data);
+                }
+                favourite.convertUniqueData();
+              });
+            },
+            icon: Icon(
+              data['isTapped']
+                  ? Icons.favorite
+                  : Icons.favorite_border_outlined,
+              color: data['isTapped'] ? Colors.red : null,
+            ),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(12.0),

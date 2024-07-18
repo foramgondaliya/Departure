@@ -30,6 +30,17 @@ class _HomePageState extends State<HomePage> {
           "HomePage",
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed('favouritePage',);
+            },
+            icon: Icon(
+              Icons.favorite,
+              size: 30,
+            ),
+          )
+        ],
       ),
       body: FutureBuilder(
         future: jsonData,

@@ -1,6 +1,7 @@
 import 'package:bhagwatgita/Provider/themeProvider.dart';
 import 'package:bhagwatgita/Sceens/detailPage..dart';
 import 'package:bhagwatgita/Sceens/detailPageEnglish.dart';
+import 'package:bhagwatgita/Sceens/favouritePage.dart';
 import 'package:bhagwatgita/Sceens/homePage.dart';
 import 'package:bhagwatgita/Sceens/homePageEnglish.dart';
 import 'package:bhagwatgita/Sceens/language.dart';
@@ -12,7 +13,9 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => ThemeProvider()),
+        ChangeNotifierProvider(
+          create: (context) => ThemeProvider(),
+        ),
       ],
       child: myApp(),
     ),
@@ -33,11 +36,12 @@ class myApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (context) => splashScreen(),
-        'language': (context) => Language(),
+        'language': (context) => LanguagePage(),
         'homePage': (context) => HomePage(),
         'homePageEnglish': (context) => HomePageEnglish(),
         'detailPage': (context) => DetailPage(),
         'detailPageEnglish': (context) => DetailPageEnglish(),
+        'favouritePage': (context) => favouritePage(),
       },
     );
     ;
